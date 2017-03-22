@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+img {
+    max-width:400%;
+    height: auto;
+}
+</style>
+
+<meta charset="ISO-8859-1">
+<title>ChatUs.Com||Home</title>
+
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+ 
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+<script type="text/javascript" src="resources/angular.min.js"></script>
+<script type="text/javascript" src="resources/angular-route.js"></script>
+<script type="text/javascript" src="resources/angular-cookies.js"></script>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.1/sockjs.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+
+<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="Users/userctrl.js"></script>
+<script type="text/javascript" src="Login/loginctrl.js"></script>
+<script type="text/javascript" src="Login/loginService.js"></script>
+<script type="text/javascript" src="Blog/blogctrl.js"></script>
+<script type="text/javascript" src="Friend/myfriendsctrl.js"></script>
+<script type="text/javascript" src="Friend/allUsersCtrl.js"></script>
+<script type="text/javascript" src="Job/jobctrl.js"></script>
+<script type="text/javascript" src="Chat/chatController.js"></script>
+<script type="text/javascript" src="Chat/chatService.js"></script>
+<script type="text/javascript" src="Forum/forumctrl.js"></script>
+<script type="text/javascript" src="Forum/commentctrl.js"></script>
+<script type="text/javascript" src="Admin/admin.js"></script>
+
+
+<link rel="stylesheet" href="resources/blog.css">
+<link rel="stylesheet" href="resources/register.css">
+<link rel="stylesheet" href="resources/user.css">
+<link rel="stylesheet" href="resources/login.css">
+<link rel="stylesheet" href="resources/comments.css">
+<script type="text/javascript" src="resources/login.js"></script>
+
+
+
+</head>
+<h1>
+		<center>ChatUs.Com</center>
+	</h1>
+<body data-ng-app="myApp">
+
+	          <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+             <div class="navbar-header">
+             
+				<a class="navbar-brand" href="#home"><b> </b>Home</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+				 <!-- <li><a href="#blog">Blog</a></li> 
+				 <li><a href="#viewblog">View Blogs</a></li> -->
+			
+				  <li class="dropdown">
+				  
+				 
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Blogs
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#blog">CreateBlog</a></li>
+          <li><a href="#viewblog">ViewBlog</a></li>
+          
+        </ul>
+      </li> 
+       <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Jobs
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li data-ng-show="currentuser.role=='Admin'"><a href="#jobs">CreateJob</a></li>
+          <li data-ng-show="currentuser.role=='Student'"><a href="#applyjob">ApplyJobs</a></li>
+          
+        </ul>
+      </li> 
+				<!--  <li><a href="#forum">Forum</a></li>
+				 <li><a href="#individualforum">View Forum</a></li> -->
+				 
+				  <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Forums
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#forum">CreateForum</a></li>
+          <li><a href="#viewforum">ViewForum</a></li>
+          
+        </ul>
+      </li> 
+					<li data-ng-hide="currentuser.role=='Admin'"><a href="#users">Find Friends</a></li>
+					<li data-ng-hide="currentuser.role=='Admin'"><a href="#chat">Chat</a></li>
+					
+					
+					
+					
+					</ul>
+					 <ul class="nav navbar-nav navbar-right">
+					 <li><a href="#register" data-ng-hide="globals.currentUser.islogged"><i class="glyphicon glyphicon-user"></i></a></li>
+					<li><a href="#login"
+						data-ng-hide="globals.currentUser.islogged"><i class="glyphicon glyphicon-log-in"></i></a></li>
+							
+                             <li class=style="padding-top:10px;" data-ng-show="globals.currentUser.islogged"><p style="color:white";>Welcome:{{globals.currentUser.username}}</p></li>
+                             <li data-ng-show="globals.currentUser.islogged"><a href="#myprofile">My Profile</a></li>
+                              <li data-ng-show="globals.currentUser.islogged"><a href=""  data-ng-controller="LoginController" data-ng-click="vm.logout()"></a></li>
+							</ul><!-- {{currentUser.id}} -->
+					</div>
+						</div>
+	
+		</nav>
+			
+			 <section id="home" class="text-center">
+         
+                <div id="carousel-example" class="carousel slide" data-ride="carousel">
+
+                    <div class="carousel-inner">
+                        <div class="item active">
+
+                            <img src="resources/imgs/collaboration-at-work.jpg" alt="" />
+                            <div class="carousel-caption" >
+                                <h4 class="back-light">Focus on COLLABORATION!!!Instead Of Competition</h4>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="resources/imgs/collaboration-at-work.jpg" alt="" />
+                            <div class="carousel-caption ">
+                                <h4 class="back-light">ChatUS.com EQUALS INNOVATION</h4>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="resources/imgs/collaboration-at-work.jpg" alt="" />
+                            <div class="carousel-caption ">
+                                <h4 class="back-light">Let us COMBINE HANDS for our COLLABORATION</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example" data-slide-to="1"></li>
+                        <li data-target="#carousel-example" data-slide-to="2"></li>
+                    </ol>
+                </div>
+           
+       </section>
+   
+			<div class="container">
+
+  
+  <div class="row">
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="C:\Users\dell1\workspace\ChatUsFrEnd\WebContent\resources\thanks.html" target="_blank">
+          <img src="resources/imgs/sessionshadow.jpg" alt="Lights" style="width:100%">
+          <div class="caption">
+            <p>Get together to conquer</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="C:\Users\dell1\workspace\ChatUsFrEnd\WebContent\resources\thanks.html" target="_blank">
+          <img src="resources/imgs/22.jpg" alt="Nature" style="width:100%">
+          <div class="caption">
+                     <p>Teams that work collaboratively can obtain greater recognition</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="C:\Users\dell1\workspace\ChatUsFrEnd\WebContent\resources\thanks.html" target="_blank">
+          <img src="resources/imgs/99.jpg" alt="Fjords" style="width:100%">
+          <div class="caption">
+                      <p> Most collaboration requires leadership</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+			
+		<div data-ng-view> </div>
+		<br><br>	
+		<br><br>
+    <section id="footer-sec" >
+             
+            <div class="container">
+           <div class="row  pad-bottom" >
+            <div class="col-md-4">
+                <h4> <strong>ABOUT COMPANY</strong> </h4>
+                            <p>
+                               ChatUs.Com is one of the largest Alumni Site.<br>
+                        It COLLABORATE students and employees in one site.<br>
+                                ChatUs.Com many followers all over INDIA.
+                            </p>
+                <a href="#" >read more</a>
+                </div>
+               <div class="col-md-4">
+                    <h4> <strong>SOCIAL LINKS</strong> </h4>
+                   <p>
+                     <a href="#"><i class="fa fa-facebook-square fa-3x"  ></i></a>  
+                        <a href="#"><i class="fa fa-twitter-square fa-3x"  ></i></a>  
+                        <a href="#"><i class="fa fa-linkedin-square fa-3x"  ></i></a>  
+                       <a href="#"><i class="fa fa-google-plus-square fa-3x"  ></i></a>  
+                   </p>
+                </div>
+               <div class="col-md-4">
+                   <h4> <strong>OUR LOCATION</strong> </h4>
+                            <p>
+                               234/45 , The Wonder Land, <br />
+                               Sadhashiv peth, Pune  <br />
+                               JUST INDIA -411030
+                            </p>
+                    <a href="#" class="btn btn-primary" >SEND QUERY</a>
+                </div>
+               </div>
+            </div>
+    </section>         
+    
+
+
+	
+</body>
+
+</html>
